@@ -1,9 +1,10 @@
-﻿// lab1.cpp: определяет точку входа для консольного приложения.
+// Lab1.1.cpp: определяет точку входа для консольного приложения.
 //
 
 #include "stdafx.h"
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
 int main() {
@@ -14,11 +15,19 @@ int main() {
 	do {
 		cout << "\nEnter two numbers please:" << endl;
 		cin >> num1 >> num2;
-		cout << "What do you want to do?" << endl
+
+	    while (cin.fail()) {
+			cout << "\nIncorrect input.Try again\n";
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cin >> num1 >> num2;
+		}
+		cout << "\nWhat do you want to do?" << endl
 			<< "1. +" << endl
 			<< "2. -" << endl
 			<< "3. *" << endl
 			<< "4. /" << endl
+			<< " Next operations wiil be available for the first number " << endl
 			<< "5. Sqrt" << endl
 			<< "6. Sqr" << endl
 			<< "7. Log (a,b)" << endl;
@@ -72,6 +81,7 @@ int main() {
 		default:
 			cout << "You entered an incorrect number. Try again";
 		}
+
 		cout << "\nDo you want to try again? y/n\n";
 		cin >> agreement;
 
