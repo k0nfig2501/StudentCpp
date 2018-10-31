@@ -8,15 +8,12 @@
 using namespace std;
 
 int main() {
-	int command;
-	float num1, num2, result;
 	char agreement = 'y';
-
 	do {
+		float num1, num2;
 		cout << "\nEnter two numbers please:" << endl;
 		cin >> num1 >> num2;
-
-	    while (cin.fail()) {
+	        while (cin.fail()) {
 			cout << "\nIncorrect input.Try again\n";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -31,9 +28,18 @@ int main() {
 			<< "5. Sqrt" << endl
 			<< "6. Sqr" << endl
 			<< "7. Log (a,b)" << endl;
+
+		int command;
 		cin >> command;
+		while (cin.fail()) {
+			cout << "\nIncorrect command.Try again\n";
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cin >> command;
+		}
 		cout << "Your answer: " << command << endl;
 
+		float result;
 		switch (command) {
 		case 1:
 			result = num1 + num2;
@@ -61,7 +67,7 @@ int main() {
 				cout << "Result: " << result;
 			}
 			else
-				cout << "Incorrect operation";
+				cout << "Incorrect operation\n";
 			break;
 
 		case 6:
@@ -84,7 +90,7 @@ int main() {
 
 		cout << "\nDo you want to try again? y/n\n";
 		cin >> agreement;
-
 	} while (agreement == 'y');
+
 	return 0;
 }
